@@ -76,6 +76,9 @@ foreach ($players as $key => $row) {
     $weight[$key] = $row['weight'];
 }
 
+echo '<pre>';
+print_r($players);
+echo '</pre>';
 
 array_multisort($height, SORT_ASC, $players);
 
