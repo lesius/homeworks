@@ -21,10 +21,25 @@ ini_set('display_startup_errors', 1);
 //print_r($players);
 //echo '<pre/>';
 
+$team = array();
+foreach ($players as $row){
+    echo $row;
+    $line = explode("\t", $row);
+    $team[$line[1]] = array($line[0],$line[1],$line[2],$line[3]);
+}
 echo '<br/>';
 
+echo '<pre>';
+print_r($team);
 
-  if ($number_of_players == 0)
+echo '<br/>';
+
+ksort($team);
+echo '<pre>';
+print_r($team);
+
+
+if ($number_of_players == 0)
   {
       echo '<p><strong>>Игроков в команде нет.</strong></p>';
   }
@@ -34,30 +49,8 @@ echo '<br/>';
       '<th bgcolor = \"#CCCCFF\">Позиция</th>' .
       '<th bgcolor = \"#CCCCFF\">Рост</th>' .
       '<tr>';
-  for ($i=0; $i<$number_of_players; $i++)
-  {
-      //разбиение строк
-      $line = explode( "\t", $players[$i] );
 
-      $line[1] = intval( $line[1] );
-      $line[2] = strval( $line[2] );
-      $line[3] = intval( $line[3] );
-
-      //вывод
-        echo '<pre>';
-        print_r($line);
-        echo '<pre/>';
-
-//      function compare ($x, $y){
-//          if ($x[1] == $y[1])
-//              return 0;
-//          else if ($x[1] < $y[1])
-//              return -1;
-//          else
-//              return 1;
-//      }
-//
-//      usort($line[1], 'compare');
+foreach ($team as $line){
 
       echo "<tr>
                 <td>$line[0]</td>
@@ -70,3 +63,4 @@ echo '<br/>';
 ?>
 </body>
 </html>
+
